@@ -53,24 +53,9 @@ async function ensureAdminUser() {
 // Middleware
 app.use(helmet());
 
-const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  ...(process.env.ALLOWED_ORIGINS?.split(',').map((origin) => origin.trim()) || []),
-].filter(Boolean);
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin) {
-        callback(null, true);
-        return;
-      }
-      if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error(`Origin ${origin} not allowed by CORS`));
-      }
-    },
+    origin: true, // Allow all origins temporarily for debugging
     credentials: true,
   })
 );
@@ -84,6 +69,24 @@ app.use('/api/content', contentRoutes);
 app.use('/api/shop', shopRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/contact', contactRoutes);
+
+// Root route for health checks
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Archeon Backend API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      auth: '/api/auth',
+      users: '/api/users',
+      content: '/api/content',
+      shop: '/api/shop',
+      payments: '/api/payments',
+      contact: '/api/contact',
+      health: '/api/health'
+    }
+  });
+});
 
 // Health check
 app.get('/api/health', (req, res) => {
