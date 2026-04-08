@@ -23,7 +23,7 @@ services:
       - key: ADMIN_USERNAME
         value: ArchADM-123
       - key: ADMIN_PASSWORD
-        value: #ADM123
+        value: "#ADM123"
       - key: ADMIN_EMAIL
         value: admin@archeont.com
       - key: EMAIL_HOST
@@ -36,8 +36,6 @@ services:
         value: sua-senha-app
       - key: EMAIL_FROM
         value: seu-email@gmail.com
-      - key: ADMIN_EMAIL
-        value: seu-email-admin@example.com
       - key: CLOUDINARY_CLOUD_NAME
         value: your-cloud-name
       - key: CLOUDINARY_API_KEY

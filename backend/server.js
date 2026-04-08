@@ -22,6 +22,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 async function ensureAdminUser() {
   if (!ADMIN_USERNAME || !ADMIN_EMAIL || !ADMIN_PASSWORD) {
+    console.warn('⚠️ Admin auto-creation skipped: ADMIN_USERNAME, ADMIN_EMAIL and ADMIN_PASSWORD must all be set.');
     return;
   }
 
