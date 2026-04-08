@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Mail, Clock, User, ScrollText, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 import Particles from "./Particles";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -9,6 +10,7 @@ export function Layout() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const { user, isAuthenticated } = useAuth();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
