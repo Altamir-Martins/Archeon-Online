@@ -1,8 +1,10 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Mail, Clock, User, ScrollText, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 import Particles from "./Particles";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Layout() {
   const location = useLocation();
@@ -17,14 +19,16 @@ export function Layout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const { t } = useTranslation();
+
   const navLinks = [
-    { path: "/", label: "HOME" },
-    { path: "/portfolio", label: "PORTFÓLIO" },
-    { path: "/servicos", label: "SERVIÇOS" },
-    { path: "/loja", label: "LOJA" },
-    { path: "/como-trabalhamos", label: "COMO TRABALHAMOS" },
-    { path: "/sobre", label: "SOBRE" },
-    { path: "/termos", label: "TERMOS" },
+    { path: "/", label: t("nav.home") },
+    { path: "/portfolio", label: t("nav.portfolio") },
+    { path: "/servicos", label: t("nav.services") },
+    { path: "/loja", label: t("nav.shop") },
+    { path: "/como-trabalhamos", label: t("nav.howWeWork") },
+    { path: "/sobre", label: t("nav.about") },
+    { path: "/termos", label: t("nav.terms") },
   ];
 
   return (
@@ -66,6 +70,9 @@ export function Layout() {
 
             {/* ================= INICIO AREA: BOTÕES DE AÇÃO DO HEADER ================= */}
             {/* Botões de Cadastro, Login, Perfil e Solicitar Projeto */}
+            <div className="hidden sm:flex items-center gap-3">
+              <LanguageSwitcher />
+            </div>
             <div className="flex items-center gap-3">
               {!isAuthenticated ? (
                 <>
@@ -74,10 +81,10 @@ export function Layout() {
                   <Link 
                     to="/cadastro"
                     className="px-4 py-2 bg-transparent border border-[#8b6f47]/50 text-[#a89677] hover:border-[#b8964f] hover:text-[#b8964f] transition-all duration-300 tracking-wider text-sm flex items-center gap-2 group"
-                    title="Cadastro"
+                    title={t("auth.signUp")}
                   >
                     <ScrollText className="w-4 h-4" />
-                    <span className="hidden xl:inline">CADASTRO</span>
+                    <span className="hidden xl:inline">{t("auth.signUp")}</span>
                   </Link>
 
                   {/* ================= BOTÃO DE LOGIN ================= */}
@@ -85,10 +92,10 @@ export function Layout() {
                   <Link 
                     to="/login"
                     className="px-4 py-2 bg-transparent border border-[#8b6f47]/50 text-[#a89677] hover:border-[#b8964f] hover:text-[#b8964f] transition-all duration-300 tracking-wider text-sm flex items-center gap-2 group"
-                    title="Login"
+                    title={t("auth.loginTitle")}
                   >
                     <Shield className="w-4 h-4" />
-                    <span className="hidden xl:inline">LOGIN</span>
+                    <span className="hidden xl:inline">{t("auth.loginTitle")}</span>
                   </Link>
                 </>
               ) : (
@@ -110,7 +117,7 @@ export function Layout() {
                 to="/solicitar-projeto"
                 className="px-6 py-2 bg-transparent border-2 border-[#b8964f] text-[#b8964f] hover:bg-[#b8964f] hover:text-[#1a0f08] transition-all duration-300 tracking-wider text-sm"
               >
-                SOLICITAR PROJETO
+                {t("nav.requestProject")}
               </Link>
             </div>
             {/* ================= FIM AREA: BOTÕES DE AÇÃO DO HEADER ================= */}
