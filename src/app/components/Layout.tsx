@@ -1,7 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Mail, Clock, User, ScrollText, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 import Particles from "./Particles";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -19,16 +18,14 @@ export function Layout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const { t } = useTranslation();
-
   const navLinks = [
-    { path: "/", label: t("nav.home") },
-    { path: "/portfolio", label: t("nav.portfolio") },
-    { path: "/servicos", label: t("nav.services") },
-    { path: "/loja", label: t("nav.shop") },
-    { path: "/como-trabalhamos", label: t("nav.howWeWork") },
-    { path: "/sobre", label: t("nav.about") },
-    { path: "/termos", label: t("nav.terms") },
+    { path: "/", label: "HOME" },
+    { path: "/portfolio", label: "PORTFÓLIO" },
+    { path: "/servicos", label: "SERVIÇOS" },
+    { path: "/loja", label: "LOJA" },
+    { path: "/como-trabalhamos", label: "COMO TRABALHAMOS" },
+    { path: "/sobre", label: "SOBRE" },
+    { path: "/termos", label: "TERMOS" },
   ];
 
   return (
@@ -117,7 +114,7 @@ export function Layout() {
                 to="/solicitar-projeto"
                 className="px-6 py-2 bg-transparent border-2 border-[#b8964f] text-[#b8964f] hover:bg-[#b8964f] hover:text-[#1a0f08] transition-all duration-300 tracking-wider text-sm"
               >
-                {t("nav.requestProject")}
+                SOLICITAR PROJETO
               </Link>
             </div>
             {/* ================= FIM AREA: BOTÕES DE AÇÃO DO HEADER ================= */}

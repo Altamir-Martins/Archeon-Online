@@ -78,9 +78,13 @@ const resources = {
   },
 };
 
+const defaultLanguage = typeof window !== 'undefined' && window.localStorage
+  ? window.localStorage.getItem('archeonLanguage') || 'pt'
+  : 'pt';
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: localStorage.getItem('archeonLanguage') || 'pt',
+  lng: defaultLanguage,
   fallbackLng: 'pt',
   interpolation: {
     escapeValue: false,
