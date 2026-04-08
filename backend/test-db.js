@@ -28,7 +28,7 @@ async function testConnection() {
     console.log('📋 Tabelas encontradas:', tables.rows.map(row => row.table_name));
 
     // Verificar se as tabelas principais existem
-    const requiredTables = ['users', 'content', 'products', 'purchases', 'rewards'];
+    const requiredTables = ['users', 'rewards', 'purchases', 'site_content', 'admin_logs', 'shop_products'];
     const existingTables = tables.rows.map(row => row.table_name);
 
     const missingTables = requiredTables.filter(table => !existingTables.includes(table));
