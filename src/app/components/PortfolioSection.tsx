@@ -115,7 +115,6 @@ export function PortfolioSection({
           <div
             key={index}
             className="group relative aspect-[4/3] overflow-hidden border border-[#8b6f47]/30 hover:border-[#b8964f] transition-all duration-300"
-            onClick={(e) => e.stopPropagation()}
           >
             <EditableImage
               id={`portfolio.thumb.${project.id}.image.${index}`}

@@ -467,8 +467,14 @@ export function Portfolio() {
 
         {selectedProject && (
           <>
-            <div className="fixed inset-0 z-[1000] bg-black/95 flex items-center justify-center p-4">
-              <div className="bg-[#0a0604] border-2 border-[#b8964f] max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div
+              className="fixed inset-0 z-[1000] bg-black/95 flex items-center justify-center p-4"
+              onClick={closeProjectModal}
+            >
+              <div
+                className="bg-[#0a0604] border-2 border-[#b8964f] max-w-6xl w-full max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
               <div className="p-8 border-b border-[#8b6f47]/30">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
                   <div className="max-w-3xl">

@@ -3,7 +3,9 @@
  * Handles authentication, error handling, e gerenciamento de tokens
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD ? 'https://archeon-backend.onrender.com' : 'http://localhost:5000');
 
 // ================= TIPOS =================
 export interface LoginCredentials {
@@ -96,9 +98,10 @@ async function fetchWithAuth(
     }
 
     return await response.json();
-  } catch (error) {
-    console.error(`API Error [${endpoint}]:`, error);
-    throw error;
+  } catch (error: any) {
+    const message = error?.message || `Erro de rede ao acessar ${API_BASE_URL}${endpoint}`;
+    console.error(`API Error [${endpoint}] ${API_BASE_URL}:`, error);
+    throw new Error(message);
   }
 }
 

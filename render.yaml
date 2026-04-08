@@ -2,21 +2,30 @@ services:
   - type: web
     name: archeon-backend
     runtime: node
-    buildCommand: npm install
-    startCommand: npm start
+    root: backend
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 5000
       - key: FRONTEND_URL
-        value: https://seu-frontend-vercel.vercel.app
+        value: https://archeon-online.vercel.app
+      - key: ALLOWED_ORIGINS
+        value: https://archeon-online.vercel.app
       - key: DATABASE_URL
         value: postgresql://postgres:GTAfbi1450.@db.pdrkasxpqrbnkxcidiyf.supabase.co:5432/postgres
       - key: JWT_SECRET
         value: archeon-prod-jwt-secret-key-2024-very-secure-random-string-change-this
       - key: JWT_EXPIRES_IN
         value: 7d
+      - key: ADMIN_USERNAME
+        value: ArchADM-123
+      - key: ADMIN_PASSWORD
+        value: #ADM123
+      - key: ADMIN_EMAIL
+        value: admin@archeont.com
       - key: EMAIL_HOST
         value: smtp.gmail.com
       - key: EMAIL_PORT
