@@ -1,16 +1,13 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Mail, Clock, User, ScrollText, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 import Particles from "./Particles";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Layout() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const { user, isAuthenticated } = useAuth();
-  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,9 +66,6 @@ export function Layout() {
 
             {/* ================= INICIO AREA: BOTÕES DE AÇÃO DO HEADER ================= */}
             {/* Botões de Cadastro, Login, Perfil e Solicitar Projeto */}
-            <div className="hidden sm:flex items-center gap-3">
-              <LanguageSwitcher />
-            </div>
             <div className="flex items-center gap-3">
               {!isAuthenticated ? (
                 <>
@@ -80,10 +74,10 @@ export function Layout() {
                   <Link 
                     to="/cadastro"
                     className="px-4 py-2 bg-transparent border border-[#8b6f47]/50 text-[#a89677] hover:border-[#b8964f] hover:text-[#b8964f] transition-all duration-300 tracking-wider text-sm flex items-center gap-2 group"
-                    title={t("auth.signUp")}
+                    title="Cadastro"
                   >
                     <ScrollText className="w-4 h-4" />
-                    <span className="hidden xl:inline">{t("auth.signUp")}</span>
+                    <span className="hidden xl:inline">CADASTRO</span>
                   </Link>
 
                   {/* ================= BOTÃO DE LOGIN ================= */}
@@ -91,10 +85,10 @@ export function Layout() {
                   <Link 
                     to="/login"
                     className="px-4 py-2 bg-transparent border border-[#8b6f47]/50 text-[#a89677] hover:border-[#b8964f] hover:text-[#b8964f] transition-all duration-300 tracking-wider text-sm flex items-center gap-2 group"
-                    title={t("auth.loginTitle")}
+                    title="Login"
                   >
                     <Shield className="w-4 h-4" />
-                    <span className="hidden xl:inline">{t("auth.loginTitle")}</span>
+                    <span className="hidden xl:inline">LOGIN</span>
                   </Link>
                 </>
               ) : (

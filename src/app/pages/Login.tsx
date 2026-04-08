@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
-import { useTranslation } from "react-i18next";
 import pergaminho from "../images/inicio/pergaminho.jpg";
-
 
 export function Login() {
   const navigate = useNavigate();
@@ -13,15 +11,13 @@ export function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { t } = useTranslation();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     if (!usernameOrEmail || !password) {
-      setError(t("auth.pleaseFillFields"));
+      setError("Por favor, preencha todos os campos.");
       setLoading(false);
       return;
     }
@@ -31,7 +27,7 @@ export function Login() {
     if (success) {
       navigate("/");
     } else {
-      setError(t("auth.invalidCredentials"));
+      setError("Usuário ou senha inválidos.");
     }
     
     setLoading(false);
@@ -63,7 +59,7 @@ export function Login() {
             {/* Title */}
             <div className="text-center mb-8">
               <h1 className="text-4xl md:text-5xl text-[#e8d5bb] mb-2 font-['Cinzel']">
-                {t("auth.loginTitle")}
+                LOGIN
               </h1>
               <div className="flex items-center justify-center gap-4 mt-4">
                 <div className="w-16 h-px bg-[#b8964f]"></div>
@@ -84,7 +80,7 @@ export function Login() {
               {/* Username/Email Field */}
               <div>
                 <label className="block text-sm text-[#c9b697] mb-2">
-                  {t("auth.usernameOrEmail")}
+                  Usuário ou E-mail
                 </label>
                 <input
                   type="text"
@@ -98,7 +94,7 @@ export function Login() {
               {/* Password Field */}
               <div>
                 <label className="block text-sm text-[#c9b697] mb-2">
-                  {t("auth.password")}
+                  Senha
                 </label>
                 <input
                   type="password"
@@ -115,7 +111,7 @@ export function Login() {
                   to="/recuperar-senha" 
                   className="text-sm text-[#b8964f] hover:text-[#e8d5bb] transition-colors"
                 >
-                  {t("auth.forgotPassword")}
+                  Esqueceu sua senha?
                 </Link>
               </div>
 
@@ -125,7 +121,7 @@ export function Login() {
                 disabled={loading}
                 className="w-full py-4 bg-[#8b2c2c] border-2 border-[#8b2c2c] text-[#e8d5bb] hover:bg-[#6b1c1c] transition-all duration-300 tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? `${t("auth.loginButton")}...` : t("auth.loginButton")}
+                {loading ? "Entrando..." : "Entrar"}
               </button>
             </form>
 
@@ -160,7 +156,7 @@ export function Login() {
                   to="/cadastro" 
                   className="text-[#b8964f] hover:text-[#e8d5bb] transition-colors"
                 >
-                  {t("auth.registerLink")}
+                  Cadastre-se
                 </Link>
               </p>
             </div>
