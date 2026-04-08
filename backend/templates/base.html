@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #030213;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #030213 0%, #1a1a2e 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('{{heroImage}}') center/cover;
+      opacity: 0.3;
+      z-index: 1;
+    }
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #030213;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #030213;
+      padding-bottom: 5px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .info-item {
+      background-color: #f8f9fa;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border-left: 4px solid #030213;
+    }
+    .info-label {
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #717182;
+      margin-bottom: 4px;
+    }
+    .info-value {
+      font-weight: 500;
+      color: #030213;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #030213 0%, #1a1a2e 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .highlight-title {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .highlight-value {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .highlight-subtitle {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .table th, .table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #e9ebef;
+    }
+    .table th {
+      background-color: #030213;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .table td {
+      font-size: 14px;
+    }
+    .total-row {
+      background-color: #e9ebef;
+      font-weight: 600;
+    }
+    .footer {
+      background-color: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #e9ebef;
+    }
+    .footer-text {
+      color: #717182;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .footer-links {
+      margin-top: 15px;
+    }
+    .footer-link {
+      color: #030213;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+    }
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #030213 0%, #1a1a2e 100%);
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 10px 5px;
+      transition: transform 0.2s;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        border-radius: 8px;
+      }
+      .header {
+        padding: 30px 20px;
+      }
+      .content {
+        padding: 30px 20px;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .table th, .table td {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <div class="logo">ARCHEON</div>
+        <div class="tagline">Forjando Mundos para Jogos e RPG</div>
+      </div>
+    </div>
+
+    <div class="content">
+      {{{body}}}
+    </div>
+
+    <div class="footer">
+      <div class="footer-text">
+        Este é um email automático do sistema Archeon.<br>
+        Para dúvidas, entre em contato conosco.
+      </div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Website</a>
+        <a href="#" class="footer-link">Portfólio</a>
+        <a href="#" class="footer-link">Contato</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

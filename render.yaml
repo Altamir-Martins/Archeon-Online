@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: archeon-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: FRONTEND_URL
+        value: https://seu-frontend-vercel.vercel.app
+      - key: DATABASE_URL
+        value: postgresql://postgres:GTAfbi1450.@db.pdrkasxpqrbnkxcidiyf.supabase.co:5432/postgres
+      - key: JWT_SECRET
+        value: archeon-prod-jwt-secret-key-2024-very-secure-random-string-change-this
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: 587
+      - key: EMAIL_USER
+        value: seu-email@gmail.com
+      - key: EMAIL_PASS
+        value: sua-senha-app
+      - key: EMAIL_FROM
+        value: seu-email@gmail.com
+      - key: ADMIN_EMAIL
+        value: seu-email-admin@example.com
+      - key: CLOUDINARY_CLOUD_NAME
+        value: your-cloud-name
+      - key: CLOUDINARY_API_KEY
+        value: your-api-key
+      - key: CLOUDINARY_API_SECRET
+        value: your-api-secret
+      - key: STRIPE_SECRET_KEY
+        value: sk_live_seu-segredo
+      - key: STRIPE_PUBLISHABLE_KEY
+        value: pk_live_seu-chave
+      - key: STRIPE_WEBHOOK_SECRET
+        value: whsec_seu-webhook
+    healthCheckPath: /api/health
+    plan: starter
